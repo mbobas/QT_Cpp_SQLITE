@@ -33,17 +33,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    ui->textEdit->clear();
     //zapytanie zwraca boola
     QSqlQuery zapytanie;
-    bool sukces = zapytanie.exec("SELECT imie, nazwisko FROM pracownicy");
+
+    //query z pola tekstowego
+    QString tekst;
+    tekst = ui->lineEdit->text();
+
+    bool sukces = zapytanie.exec(tekst);
     qDebug() << sukces;
+    //pobieramy ilosc pol
+    int ile_pol = zapytanie.record().count();
     //iterujemy po wszytkich rekordach zwroconych przez zpaytanie
     while(zapytanie.next())
     {
         //consola
         //qDebug()<<zapytanie.value(0).toString()<<""<<zapytanie.value(1).toString();
         QString t = "";
-        t +=zapytanie.value(0).toString()+" "+zapytanie.value(1).toString();
+        for (int i=0; i<ile_pol; i++){
+            t +=zapytanie.value(i).toString()+" ";
+        }
+
         ui->textEdit->append(t);
+
     }
 }
