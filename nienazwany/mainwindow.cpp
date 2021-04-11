@@ -30,3 +30,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    //zapytanie zwraca boola
+    QSqlQuery zapytanie;
+    bool sukces = zapytanie.exec("SELECT imie, nazwisko FROM pracownicy");
+    qDebug() << sukces;
+    //iterujemy po wszytkich rekordach zwroconych przez zpaytanie
+    while(zapytanie.next())
+    {
+        //consola
+        //qDebug()<<zapytanie.value(0).toString()<<""<<zapytanie.value(1).toString();
+        QString t = "";
+        t +=zapytanie.value(0).toString()+" "+zapytanie.value(1).toString();
+        ui->textEdit->append(t);
+    }
+}
