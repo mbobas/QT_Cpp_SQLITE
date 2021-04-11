@@ -106,3 +106,16 @@ void MainWindow::on_pushButton_3_clicked()
     }
 
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    //query z pola tekstowego
+    QString tekst;
+    tekst = ui->lineEdit->text();
+    QSqlQueryModel *zapytanie = new QSqlQueryModel;
+    zapytanie->setQuery(tekst);
+    ui->tableView->setModel(zapytanie);
+    ui->tableView->show();
+
+
+}

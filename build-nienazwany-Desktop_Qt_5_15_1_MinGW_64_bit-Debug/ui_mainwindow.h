@@ -18,6 +18,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -38,6 +39,8 @@ public:
     QPushButton *pushButton_2;
     QTableWidget *tableWidget;
     QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QTableView *tableView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -53,7 +56,7 @@ public:
         pushButton->setGeometry(QRect(610, 30, 75, 23));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(50, 60, 521, 111));
+        textEdit->setGeometry(QRect(50, 60, 521, 71));
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(50, 30, 521, 20));
@@ -74,10 +77,16 @@ public:
         pushButton_2->setGeometry(QRect(620, 200, 75, 23));
         tableWidget = new QTableWidget(centralwidget);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(50, 190, 521, 311));
+        tableWidget->setGeometry(QRect(50, 140, 521, 61));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setGeometry(QRect(620, 250, 75, 23));
+        pushButton_4 = new QPushButton(centralwidget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(620, 300, 75, 23));
+        tableView = new QTableView(centralwidget);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setGeometry(QRect(50, 210, 521, 192));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -95,11 +104,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Wykonaj", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Wykonaj1", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Nazwa Sali", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Pojemosc Sali", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Dodaj Sale", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "tableWidget2", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };
