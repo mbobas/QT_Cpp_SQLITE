@@ -114,8 +114,37 @@ void MainWindow::on_pushButton_4_clicked()
     tekst = ui->lineEdit->text();
     QSqlQueryModel *zapytanie = new QSqlQueryModel;
     zapytanie->setQuery(tekst);
+
+    //
+
     ui->tableView->setModel(zapytanie);
     ui->tableView->show();
 
 
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+
+    QSqlTableModel *model = new QSqlTableModel;
+    model->setTable("pracownicy");
+    model->select();
+
+    ui->tableView->setModel(model);
+    ui->tableView->show();
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    QSqlRelationalTableModel *model = new QSqlRelationalTableModel;
+    model->setTable("przydzialy");
+    //ktora kolumne chce polaczyc
+    model->setRelation(1, QSqlRelation("pracownicy", "id", "nazwisko"));
+    model->setRelation(2, QSqlRelation("przedmioty", "id", "nazwa_przedmiotu"));
+    model->setRelation(3, QSqlRelation("grupy", "id", "nazwa_grupy"));
+    model->select();
+
+    ui->tableView->setModel(model);
+    ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+    ui->tableView->show();
 }

@@ -41,6 +41,8 @@ public:
     QPushButton *pushButton_3;
     QPushButton *pushButton_4;
     QTableView *tableView;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -86,7 +88,13 @@ public:
         pushButton_4->setGeometry(QRect(620, 300, 75, 23));
         tableView = new QTableView(centralwidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(50, 210, 521, 192));
+        tableView->setGeometry(QRect(50, 210, 521, 331));
+        pushButton_5 = new QPushButton(centralwidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setGeometry(QRect(620, 360, 75, 23));
+        pushButton_6 = new QPushButton(centralwidget);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setGeometry(QRect(620, 400, 75, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -109,7 +117,9 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "Pojemosc Sali", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Dodaj Sale", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "tableWidget2", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "tableView", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Pracownicy", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("MainWindow", "Przydzia\305\202y", nullptr));
     } // retranslateUi
 
 };
