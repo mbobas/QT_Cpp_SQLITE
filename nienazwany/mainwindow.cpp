@@ -59,3 +59,50 @@ void MainWindow::on_pushButton_clicked()
 
     }
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString nazwa, pojemnosc;
+    nazwa = ui->lineEdit_2->text();
+    pojemnosc = ui->lineEdit_3->text();
+
+    QSqlQuery zapytanie;
+    zapytanie.prepare("INSERT INTO sale(nazwa_sali, pojemnosc) VALUES (:nazwa, :pojemnosc);");
+    zapytanie.bindValue(":nazwa", nazwa);
+    zapytanie.bindValue("pojemnosc", pojemnosc);
+    bool sukces = zapytanie.exec();
+    qDebug() << sukces;
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->tableWidget->clear();
+    //zapytanie zwraca boola
+    QSqlQuery zapytanie;
+
+    //query z pola tekstowego
+    QString tekst;
+    tekst = ui->lineEdit->text();
+
+    bool sukces = zapytanie.exec(tekst);
+    qDebug() << sukces;
+
+    int ile_pol = zapytanie.record().count();
+    ui->tableWidget->setColumnCount(ile_pol);
+    ui->tableWidget->setRowCount(0);
+
+    //pobieramy ilosc pol
+    int wiersz =0;
+    //iterujemy po wszytkich rekordach zwroconych przez zpaytanie
+    while(zapytanie.next())
+    {
+        ui->tableWidget->insertRow(wiersz);
+        for (int i=0; i<ile_pol; i++){
+            ui->tableWidget->setItem(wiersz,i, new QTableWidgetItem(zapytanie.value(i).toString()+" "));
+        }
+
+    wiersz++;
+
+    }
+
+}
